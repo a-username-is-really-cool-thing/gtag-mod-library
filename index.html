@@ -7,69 +7,23 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-
-<!-- Firebase SDK -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-  import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyALbji5u9FYD2BcMUmXH9cGiehf0tsdrVs",
-    authDomain: "mod-library.firebaseapp.com",
-    projectId: "mod-library",
-    storageBucket: "mod-library.firebasestorage.app",
-    messagingSenderId: "638109977680",
-    appId: "1:638109977680:web:9f3f61ea215cb6f6855555"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  window.db = db;
-  window.firebaseFns = { collection, getDocs, addDoc, deleteDoc, doc };
-</script>
 </head>
 <body>
 
 <header>
     <h1>Mod Library</h1>
-    <button id="darkToggle">🌙 Toggle Dark</button>
 </header>
 
 <div id="sidebar">
-    <button id="showAll">🏠 All Mods</button>
-    <button id="showLikes">💚 Likes</button>
-    <button id="showRandom">🎲 Random</button>
-    <button id="showAdmin">⚙ Admin</button>
+    <button id="showAll">All Mods</button>
+    <button id="showLikes">Likes</button>
+    <button id="showRandom">Random</button>
 </div>
 
 <main id="mainSection">
     <div id="modContainer"></div>
 </main>
 
-<div id="adminSection" style="display:none;">
-    <h2>Admin Panel</h2>
-
-    <div id="passwordPrompt">
-        <input id="adminPassword" type="password" placeholder="Enter password">
-        <button id="submitPassword">Enter</button>
-        <p id="passwordMessage" style="color:red;"></p>
-    </div>
-
-    <div id="adminControls" style="display:none;">
-        <input id="adminName" placeholder="Mod Name">
-        <input id="adminCreator" placeholder="Creator">
-        <input id="adminLink" placeholder="Link">
-        <button id="addMod">Add Mod</button>
-
-        <h3>Delete Mods</h3>
-        <div id="adminModList"></div>
-    </div>
-</div>
-
-<footer>
-    <p>© 2026</p>
-</footer>
-
-<script type="module" src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -3,19 +3,6 @@ body {
     font-family: 'Sora', sans-serif;
     background: linear-gradient(135deg, #141e30, #243b55);
     color: white;
-    transition: 0.3s;
-}
-
-body.light {
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-    color: black;
-}
-
-header {
-    padding: 1em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 #sidebar {
@@ -25,7 +12,6 @@ header {
     width: 200px;
     height: 100%;
     background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(10px);
     padding: 2em 1em;
     display: flex;
     flex-direction: column;
@@ -39,12 +25,6 @@ header {
     cursor: pointer;
     background: #1db954;
     color: white;
-    transition: 0.2s;
-}
-
-#sidebar button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #1db954;
 }
 
 main {
@@ -62,12 +42,6 @@ main {
     background: rgba(255,255,255,0.05);
     padding: 1em;
     border-radius: 12px;
-    transition: 0.2s;
-}
-
-.modCard:hover {
-    box-shadow: 0 0 20px #1db954;
-    transform: translateY(-5px);
 }
 
 .likeBtn {
@@ -78,20 +52,4 @@ main {
     cursor: pointer;
     background: #333;
     color: white;
-}
-
-#adminSection {
-    padding: 2em;
-    margin-right: 220px;
-}
-
-#adminSection input {
-    display: block;
-    margin-bottom: 1em;
-    padding: 0.5em;
-    width: 300px;
-}
-
-#adminSection button {
-    padding: 0.5em 1em;
 }
