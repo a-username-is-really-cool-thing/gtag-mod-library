@@ -8,7 +8,6 @@ const themeCheckbox = document.getElementById("themeCheckbox");
 let mods = [];
 let likedMods = JSON.parse(localStorage.getItem("likedMods") || "{}");
 
-// Load mods from mods.json
 fetch('mods.json')
     .then(res => res.json())
     .then(data => {
@@ -16,7 +15,6 @@ fetch('mods.json')
         renderMods(mods);
     });
 
-// --- Render Mods ---
 function renderMods(list) {
     modContainer.innerHTML = "";
     list.forEach(mod => {
@@ -55,7 +53,6 @@ function renderMods(list) {
     });
 }
 
-// --- Sidebar Buttons ---
 showAllBtn.onclick = () => renderMods(mods);
 showLikesBtn.onclick = () => renderMods(mods.filter(m => likedMods[m.name]));
 showRandomBtn.onclick = () => {
@@ -63,7 +60,6 @@ showRandomBtn.onclick = () => {
     renderMods([randomMod]);
 };
 
-// --- Search Filter ---
 searchInput.oninput = () => {
     const query = searchInput.value.toLowerCase();
     renderMods(mods.filter(m =>
@@ -73,7 +69,6 @@ searchInput.oninput = () => {
     ));
 };
 
-// --- Theme toggle with localStorage ---
 if(localStorage.getItem("theme") === "light"){
     document.body.classList.add("light");
     document.body.classList.remove("dark");

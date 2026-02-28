@@ -28,5 +28,35 @@
         "creator": "developer9998",
         "link": "https://github.com/iiDk-the-actual/iis.Stupid.Menu",
         "category": "Menu"
+    },
+    {
+        "name": "Computer++",
+        "creator": "KyleTheScientist",
+        "link": "https://github.com/KyleTheScientist/ComputerPlusPlus",
+        "category": "Misc"
+    },
+    {
+        "name": "Gorilla Cosmetics Mod",
+        "creator": "© 2026 Gorilla Tag Mods",
+        "link": "https://gorilla-tag-mods.com/cosmetics-mods/gorilla-cosmetics-mod/",
+        "category": "Gameplay"
+    },
+    {
+        "name": "Mono SandBox",
+        "creator": "MonoSphere",
+        "link": "https://www.nexusmods.com/gorillatag/mods/324",
+        "category": "Menu"
+    },
+    {
+        "name": "Spider Client V16 (610 Mods)",
+        "creator": "psychothinker",
+        "link": "https://www.nexusmods.com/gorillatag/mods/338",
+        "category": "Menu"
+    },
+    {
+        "name": "Banana OS",
+        "creator": "RedBrumbler, HuskyGT",
+        "link": "https://gamebanana.com/mods/534007",
+        "category": "Menu"
     }
 ]
