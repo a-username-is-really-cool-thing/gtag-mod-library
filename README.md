@@ -6,7 +6,6 @@ A free, searchable library of mods with links to the original creators.
 - Search by mod name or creator
 - Filter by category
 - Download/info links point to original creators
-- Dark, modern Spotify-like design
 
 ## How to update
 1. Edit `mods.json` to add/remove mods
@@ -14,4 +13,4 @@ A free, searchable library of mods with links to the original creators.
 3. Upload the updated files to GitHub and commit changes
 
 ## Credits
-Site created by YourName
+Site created by Jazix
