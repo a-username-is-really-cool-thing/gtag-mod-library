@@ -1,54 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Mod Library</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mod Library</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyALbji5u9FYD2BcMUmXH9cGiehf0tsdrVs",
+    authDomain: "mod-library.firebaseapp.com",
+    projectId: "mod-library",
+    storageBucket: "mod-library.firebasestorage.app",
+    messagingSenderId: "638109977680",
+    appId: "1:638109977680:web:9f3f61ea215cb6f6855555"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  window.db = db;
+  window.firebaseFns = { collection, getDocs, addDoc, deleteDoc, doc };
+</script>
 </head>
 <body>
 
 <header>
-    <div style="font-size:0.9em; color:#b3b3b3; padding:1em;">
-        Site by Jazix • All links go to original creators
-    </div>
-
-    <h1 style="text-align:center; margin-top:0.5em;">Mod Library</h1>
+    <h1>Mod Library</h1>
+    <button id="darkToggle">🌙 Toggle Dark</button>
 </header>
 
-<!-- RIGHT SIDEBAR -->
 <div id="sidebar">
     <button id="showAll">🏠 All Mods</button>
     <button id="showLikes">💚 Likes</button>
-    <button id="showSuggest">➕ Suggest</button>
+    <button id="showRandom">🎲 Random</button>
+    <button id="showAdmin">⚙ Admin</button>
 </div>
 
-<!-- MAIN MOD DISPLAY -->
-<main id="mainSection" style="display:block;">
+<main id="mainSection">
     <div id="modContainer"></div>
 </main>
 
-<!-- SUGGEST SECTION -->
-<div id="suggestSection" style="display:none; padding:2em;">
-    <h2>Suggest a Mod</h2>
+<div id="adminSection" style="display:none;">
+    <h2>Admin Panel</h2>
 
-    <form action="https://formspree.io/f/mzdawykr" method="POST">
-        <input type="text" name="modName" placeholder="Mod Name" required><br><br>
+    <div id="passwordPrompt">
+        <input id="adminPassword" type="password" placeholder="Enter password">
+        <button id="submitPassword">Enter</button>
+        <p id="passwordMessage" style="color:red;"></p>
+    </div>
 
-        <input type="text" name="creator" placeholder="Creator"><br><br>
+    <div id="adminControls" style="display:none;">
+        <input id="adminName" placeholder="Mod Name">
+        <input id="adminCreator" placeholder="Creator">
+        <input id="adminLink" placeholder="Link">
+        <button id="addMod">Add Mod</button>
 
-        <input type="url" name="link" placeholder="Mod Link" required><br><br>
-
-        <textarea name="notes" placeholder="Extra Notes (optional)"></textarea><br><br>
-
-        <button type="submit">Submit Suggestion</button>
-    </form>
+        <h3>Delete Mods</h3>
+        <div id="adminModList"></div>
+    </div>
 </div>
 
 <footer>
-    <p style="text-align:center; padding:1em; color:#b3b3b3;">© 2026 Jazix</p>
+    <p>© 2026</p>
 </footer>
 
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
 </body>
 </html>
