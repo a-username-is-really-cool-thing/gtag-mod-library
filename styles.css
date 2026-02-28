@@ -17,10 +17,11 @@ body.light {
 
 /* Header */
 header {
-    padding: 1em;
+    padding: 1em 2em;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* left-align text + toggle */
     align-items: center;
+    gap: 1em; /* space between text and toggle */
     background-color: #1db954;
     color: white;
 }
@@ -28,8 +29,8 @@ header {
 /* Toggle Switch */
 .themeToggle {
     position: relative;
-    width: 60px;
-    height: 30px;
+    width: 50px;
+    height: 24px;
 }
 
 .themeToggle input {
@@ -50,8 +51,8 @@ header {
 .themeToggle label::after {
     content: "";
     position: absolute;
-    width: 26px;
-    height: 26px;
+    width: 20px;
+    height: 20px;
     background: white;
     border-radius: 50%;
     top: 2px;
@@ -64,7 +65,7 @@ header {
 }
 
 .themeToggle input:checked + label::after {
-    left: 32px;
+    left: 28px;
 }
 
 /* Sidebar */
