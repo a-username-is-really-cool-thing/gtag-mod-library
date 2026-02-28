@@ -2,12 +2,13 @@ const modContainer = document.getElementById("modContainer");
 const showAllBtn = document.getElementById("showAll");
 const showLikesBtn = document.getElementById("showLikes");
 const showRandomBtn = document.getElementById("showRandom");
-const toggleThemeBtn = document.getElementById("toggleTheme");
 const searchInput = document.getElementById("searchInput");
+const themeCheckbox = document.getElementById("themeCheckbox");
 
 let mods = [];
 let likedMods = JSON.parse(localStorage.getItem("likedMods") || "{}");
 
+// Load mods from mods.json
 fetch('mods.json')
     .then(res => res.json())
     .then(data => {
@@ -15,6 +16,7 @@ fetch('mods.json')
         renderMods(mods);
     });
 
+// --- Render Mods ---
 function renderMods(list) {
     modContainer.innerHTML = "";
     list.forEach(mod => {
@@ -53,7 +55,7 @@ function renderMods(list) {
     });
 }
 
-// Sidebar buttons
+// --- Sidebar Buttons ---
 showAllBtn.onclick = () => renderMods(mods);
 showLikesBtn.onclick = () => renderMods(mods.filter(m => likedMods[m.name]));
 showRandomBtn.onclick = () => {
@@ -61,7 +63,7 @@ showRandomBtn.onclick = () => {
     renderMods([randomMod]);
 };
 
-// Search input filter
+// --- Search Filter ---
 searchInput.oninput = () => {
     const query = searchInput.value.toLowerCase();
     renderMods(mods.filter(m =>
@@ -71,8 +73,25 @@ searchInput.oninput = () => {
     ));
 };
 
-// Theme toggle
-toggleThemeBtn.onclick = () => {
-    document.body.classList.toggle("light");
-    document.body.classList.toggle("dark");
+// --- Theme toggle with localStorage ---
+if(localStorage.getItem("theme") === "light"){
+    document.body.classList.add("light");
+    document.body.classList.remove("dark");
+    themeCheckbox.checked = true;
+} else {
+    document.body.classList.add("dark");
+    document.body.classList.remove("light");
+    themeCheckbox.checked = false;
+}
+
+themeCheckbox.onchange = () => {
+    if(themeCheckbox.checked){
+        document.body.classList.add("light");
+        document.body.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+    } else {
+        document.body.classList.add("dark");
+        document.body.classList.remove("light");
+        localStorage.setItem("theme", "dark");
+    }
 };
