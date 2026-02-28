@@ -1,39 +1,90 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: #f2f2f2;
+    background-color: #121212; /* dark background */
+    color: #FFFFFF;
 }
 
 header {
-    background: #333;
-    color: white;
+    background-color: #1DB954; /* Spotify green */
     padding: 1em;
     text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #FFFFFF;
 }
 
 input, select {
     margin: 0.5em;
     padding: 0.5em;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 1em;
+}
+
+input {
+    width: 60%;
+}
+
+select {
+    width: 20%;
 }
 
 #modContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1em;
-    padding: 1em;
+    padding: 2em;
 }
 
 .modCard {
-    background: white;
+    background-color: #1E1E1E;
     padding: 1em;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.modCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.modCard h3 {
+    margin: 0 0 0.5em 0;
+    font-size: 1.2em;
+}
+
+.modCard p {
+    margin: 0 0 0.5em 0;
+    font-size: 0.9em;
+    color: #b3b3b3;
 }
 
 .modCard a {
-    display: block;
-    margin-top: 0.5em;
-    color: blue;
+    display: inline-block;
+    padding: 0.5em 1em;
+    border-radius: 20px;
     text-decoration: none;
+    color: #1DB954;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s;
+}
+
+.modCard a:hover {
+    background-color: #1DB954;
+    color: #FFFFFF;
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #181818;
+    font-size: 0.9em;
+    color: #b3b3b3;
 }
