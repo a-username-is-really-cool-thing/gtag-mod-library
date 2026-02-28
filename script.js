@@ -11,12 +11,13 @@ fetch('mods.json?v=' + new Date().getTime())
     .then(data => {
         mods = data;
         populateCategories();
-        renderMods(mods);
+        renderMods(mods); // Render mods immediately on page load
     })
     .catch(error => {
         console.error("Error loading mods:", error);
     });
 
+// Populate category dropdown
 function populateCategories() {
     const categories = [...new Set(mods.map(m => m.category))];
 
@@ -28,6 +29,7 @@ function populateCategories() {
     });
 }
 
+// Render mods in container
 function renderMods(list) {
     container.innerHTML = '';
 
@@ -58,8 +60,8 @@ function renderMods(list) {
 }
 
 // Search & Filter
-searchInput.addEventListener('input', updateDisplay);
-categoryFilter.addEventListener('change', updateDisplay);
+searchInput?.addEventListener('input', updateDisplay);
+categoryFilter?.addEventListener('change', updateDisplay);
 
 function updateDisplay() {
     const searchTerm = searchInput.value.toLowerCase();
@@ -114,18 +116,25 @@ function switchSection(showElem, hideElem) {
 }
 
 // TAB BUTTONS
-document.getElementById("showLikes").addEventListener("click", () => {
+document.getElementById("showLikes")?.addEventListener("click", () => {
     switchSection(mainSection, suggestSection);
     const liked = getLikedMods();
     const likedMods = mods.filter(mod => liked.includes(mod.name));
     renderMods(likedMods);
 });
 
-document.getElementById("showAll").addEventListener("click", () => {
+document.getElementById("showAll")?.addEventListener("click", () => {
     switchSection(mainSection, suggestSection);
     renderMods(mods);
 });
 
-document.getElementById("showSuggest").addEventListener("click", () => {
+document.getElementById("showSuggest")?.addEventListener("click", () => {
     switchSection(suggestSection, mainSection);
+});
+
+// ENSURE MODS RENDER ON PAGE LOAD
+window.addEventListener("DOMContentLoaded", () => {
+    mainSection.style.display = "block";
+    suggestSection.style.display = "none";
+    renderMods(mods);
 });
