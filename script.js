@@ -3,16 +3,15 @@ const showAllBtn = document.getElementById("showAll");
 const showLikesBtn = document.getElementById("showLikes");
 const showRandomBtn = document.getElementById("showRandom");
 const toggleThemeBtn = document.getElementById("toggleTheme");
+const searchInput = document.getElementById("searchInput");
 
-// Load mods from mods.json
 let mods = [];
+let likedMods = JSON.parse(localStorage.getItem("likedMods") || "{}");
+
 fetch('mods.json')
     .then(res => res.json())
     .then(data => {
-        mods = data.map(mod => {
-            mod.likes = parseInt(localStorage.getItem('like_' + mod.name)) || 0;
-            return mod;
-        });
+        mods = data.map(mod => ({ ...mod }));
         renderMods(mods);
     });
 
@@ -21,12 +20,16 @@ function renderMods(list) {
     list.forEach(mod => {
         const card = document.createElement("div");
         card.className = "modCard";
+
+        const isLiked = likedMods[mod.name] || false;
+        const likeCount = isLiked ? 1 : 0;
+
         card.innerHTML = `
             <h3>${mod.name}</h3>
             <p>By ${mod.creator}</p>
             <p>Category: ${mod.category}</p>
-            <p>❤️ <span class="likeCount">${mod.likes}</span></p>
-            <button class="likeBtn">Like</button>
+            <p>❤️ <span class="likeCount">${likeCount}</span></p>
+            <button class="likeBtn">${isLiked ? 'Unlike' : 'Like'}</button>
             <a href="${mod.link}" target="_blank">Open</a>
         `;
 
@@ -34,9 +37,16 @@ function renderMods(list) {
         const likeCountEl = card.querySelector(".likeCount");
 
         likeBtn.onclick = () => {
-            mod.likes++;
-            localStorage.setItem('like_' + mod.name, mod.likes);
-            likeCountEl.textContent = mod.likes;
+            if(likedMods[mod.name]){
+                likedMods[mod.name] = false;
+                likeCountEl.textContent = 0;
+                likeBtn.textContent = 'Like';
+            } else {
+                likedMods[mod.name] = true;
+                likeCountEl.textContent = 1;
+                likeBtn.textContent = 'Unlike';
+            }
+            localStorage.setItem("likedMods", JSON.stringify(likedMods));
         };
 
         modContainer.appendChild(card);
@@ -45,10 +55,20 @@ function renderMods(list) {
 
 // Sidebar buttons
 showAllBtn.onclick = () => renderMods(mods);
-showLikesBtn.onclick = () => renderMods(mods.filter(m => m.likes > 0));
+showLikesBtn.onclick = () => renderMods(mods.filter(m => likedMods[m.name]));
 showRandomBtn.onclick = () => {
     const randomMod = mods[Math.floor(Math.random() * mods.length)];
     renderMods([randomMod]);
+};
+
+// Search input filter
+searchInput.oninput = () => {
+    const query = searchInput.value.toLowerCase();
+    renderMods(mods.filter(m =>
+        m.name.toLowerCase().includes(query) ||
+        m.creator.toLowerCase().includes(query) ||
+        m.category.toLowerCase().includes(query)
+    ));
 };
 
 // Theme toggle

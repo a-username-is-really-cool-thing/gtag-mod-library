@@ -27,7 +27,7 @@ header {
     position: fixed;
     right: 0;
     top: 0;
-    width: 200px;
+    width: 220px;
     height: 100%;
     background-color: #191414;
     padding: 2em 1em;
@@ -38,6 +38,14 @@ header {
 
 body.light #sidebar {
     background-color: #dcdcdc;
+}
+
+#sidebar input {
+    padding: 0.5em;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    margin-bottom: 0.5em;
 }
 
 #sidebar button {
@@ -56,7 +64,7 @@ body.light #sidebar {
 
 main {
     padding: 2em;
-    margin-right: 220px;
+    margin-right: 240px;
 }
 
 #modContainer {
