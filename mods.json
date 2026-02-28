@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Example Mod 1",
+        "creator": "CreatorName",
+        "link": "https://example.com",
+        "category": "Gameplay"
+    },
+    {
+        "name": "Example Mod 2",
+        "creator": "AnotherCreator",
+        "link": "https://example2.com",
+        "category": "Graphics"
+    }
+]
