@@ -2,34 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mod Library</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 1em;">
-            <div style="font-size: 0.9em; color: #b3b3b3;">
-                Site by Jazix • All links go to original creators
-            </div>
-            <div>
-                <input type="text" id="search" placeholder="Search mods...">
-                <select id="categoryFilter">
-                    <option value="all">All Categories</option>
-                </select>
-            </div>
+
+<header>
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:0 1em;">
+        <div style="font-size:0.9em; color:#b3b3b3;">
+            Site by Jazix • All links go to original creators
         </div>
-        <h1 style="margin-top: 0.5em; text-align: center;">Mod Library</h1>
-    </header>
 
-    <main>
-        <div id="modContainer"></div>
-    </main>
+        <div>
+            <button id="showAll">🏠 All Mods</button>
+            <button id="showLikes">💚 Likes</button>
+            <button id="showSuggest">➕ Suggest</button>
+            <input type="text" id="search" placeholder="Search mods...">
+            <select id="categoryFilter">
+                <option value="all">All Categories</option>
+            </select>
+        </div>
+    </div>
 
-    <footer>
-        <p style="color:#b3b3b3; text-align:center; padding:1em;">© 2026 Jazix</p>
-    </footer>
+    <h1 style="text-align:center; margin-top:0.5em;">Mod Library</h1>
+</header>
 
-    <script src="script.js"></script>
+<!-- MAIN MOD DISPLAY -->
+<main>
+    <div id="modContainer"></div>
+</main>
+
+<!-- SUGGEST SECTION -->
+<div id="suggestSection" style="display:none; padding:2em;">
+    <h2>Suggest a Mod</h2>
+
+    <form action="https://formspree.io/f/mzdawykr" method="POST">
+        <input type="text" name="modName" placeholder="Mod Name" required><br><br>
+
+        <input type="text" name="creator" placeholder="Creator"><br><br>
+
+        <input type="url" name="link" placeholder="Mod Link" required><br><br>
+
+        <textarea name="notes" placeholder="Extra Notes (optional)"></textarea><br><br>
+
+        <button type="submit">Submit Suggestion</button>
+    </form>
+</div>
+
+<footer>
+    <p style="text-align:center; padding:1em; color:#b3b3b3;">© 2026 Jazix</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
