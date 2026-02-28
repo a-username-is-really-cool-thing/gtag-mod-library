@@ -1,185 +1,97 @@
-/* GENERAL STYLING */
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
-    color: #fff;
-    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Sora', sans-serif;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    color: white;
+    transition: 0.3s;
+}
+
+body.light {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: black;
 }
 
 header {
     padding: 1em;
-    background-color: #1f1f1f;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#sidebar {
+    position: fixed;
+    right: 0;
     top: 0;
-    z-index: 100;
+    width: 200px;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    padding: 2em 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
-h1 {
-    font-size: 2em;
+#sidebar button {
+    padding: 0.6em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #1db954;
+    color: white;
+    transition: 0.2s;
 }
 
-/* MAIN MOD AREA */
+#sidebar button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #1db954;
+}
+
 main {
     padding: 2em;
-    margin-right: 220px; /* space for sidebar */
+    margin-right: 220px;
 }
 
 #modContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1.5em;
 }
 
-/* MOD CARDS */
 .modCard {
-    background-color: #1e1e1e;
-    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
     padding: 1em;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 12px;
+    transition: 0.2s;
 }
 
 .modCard:hover {
+    box-shadow: 0 0 20px #1db954;
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.7);
 }
 
-.modCard h3 {
-    margin-top: 0;
-}
-
-.modCard p {
-    font-size: 0.85em;
-    color: #b3b3b3;
-}
-
-.modCard a {
-    display: inline-block;
+.likeBtn {
     margin-top: 0.5em;
-    color: #1db954;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.modCard a:hover {
-    color: #1ed760;
-}
-
-button.likeBtn {
-    margin-top: 0.5em;
-    padding: 0.4em 0.8em;
     border: none;
+    padding: 0.4em;
     border-radius: 6px;
     cursor: pointer;
-    background-color: #282828;
-    color: #fff;
-    transition: background-color 0.2s, transform 0.2s;
+    background: #333;
+    color: white;
 }
 
-button.likeBtn:hover {
-    background-color: #1db954;
-    transform: scale(1.05);
+#adminSection {
+    padding: 2em;
+    margin-right: 220px;
 }
 
-/* SUGGEST FORM */
-#suggestSection form input,
-#suggestSection form textarea,
-#suggestSection form button {
-    width: 100%;
-    max-width: 400px;
+#adminSection input {
+    display: block;
     margin-bottom: 1em;
-    padding: 0.6em;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    font-size: 1em;
+    padding: 0.5em;
+    width: 300px;
 }
 
-#suggestSection form button {
-    background-color: #1db954;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
-}
-
-#suggestSection form button:hover {
-    background-color: #1ed760;
-    transform: scale(1.05);
-}
-
-/* SIDEBAR */
-#sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 200px;
-    height: 100%;
-    background-color: #1f1f1f;
-    padding: 2em 1em;
-    box-shadow: -2px 0 8px rgba(0,0,0,0.5);
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    transition: transform 0.3s ease;
-    z-index: 200;
-}
-
-#sidebar button {
-    background-color: #282828;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 0.6em;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.2s, transform 0.2s;
-}
-
-#sidebar button:hover {
-    background-color: #1db954;
-    transform: scale(1.05);
-}
-
-/* FOOTER */
-footer {
-    margin-top: 2em;
-    text-align: center;
-    padding: 1em;
-    color: #b3b3b3;
-}
-
-/* FADE / SLIDE ANIMATIONS */
-.fade-in {
-    animation: fadeIn 0.4s ease forwards;
-}
-
-.fade-out {
-    animation: fadeOut 0.4s ease forwards;
-}
-
-@keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(10px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeOut {
-    0% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(10px); }
-}
-
-/* RESPONSIVE */
-@media screen and (max-width: 768px) {
-    main {
-        margin-right: 0;
-    }
-    #sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 1em 0;
-    }
+#adminSection button {
+    padding: 0.5em 1em;
 }
