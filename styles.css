@@ -1,90 +1,185 @@
+/* GENERAL STYLING */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #121212; /* dark background */
-    color: #FFFFFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 header {
-    background-color: #1DB954; /* Spotify green */
     padding: 1em;
-    text-align: center;
+    background-color: #1f1f1f;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-header h1 {
-    margin: 0;
+h1 {
     font-size: 2em;
-    color: #FFFFFF;
 }
 
-input, select {
-    margin: 0.5em;
-    padding: 0.5em;
-    border-radius: 20px;
-    border: none;
-    outline: none;
-    font-size: 1em;
-}
-
-input {
-    width: 60%;
-}
-
-select {
-    width: 20%;
+/* MAIN MOD AREA */
+main {
+    padding: 2em;
+    margin-right: 220px; /* space for sidebar */
 }
 
 #modContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1em;
-    padding: 2em;
+    gap: 1.5em;
 }
 
+/* MOD CARDS */
 .modCard {
-    background-color: #1E1E1E;
-    padding: 1em;
+    background-color: #1e1e1e;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 1em;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .modCard:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.7);
 }
 
 .modCard h3 {
-    margin: 0 0 0.5em 0;
-    font-size: 1.2em;
+    margin-top: 0;
 }
 
 .modCard p {
-    margin: 0 0 0.5em 0;
-    font-size: 0.9em;
+    font-size: 0.85em;
     color: #b3b3b3;
 }
 
 .modCard a {
     display: inline-block;
-    padding: 0.5em 1em;
-    border-radius: 20px;
+    margin-top: 0.5em;
+    color: #1db954;
     text-decoration: none;
-    color: #1DB954;
-    font-weight: bold;
-    transition: background 0.2s, color 0.2s;
+    transition: color 0.2s;
 }
 
 .modCard a:hover {
-    background-color: #1DB954;
-    color: #FFFFFF;
+    color: #1ed760;
 }
 
+button.likeBtn {
+    margin-top: 0.5em;
+    padding: 0.4em 0.8em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #282828;
+    color: #fff;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+button.likeBtn:hover {
+    background-color: #1db954;
+    transform: scale(1.05);
+}
+
+/* SUGGEST FORM */
+#suggestSection form input,
+#suggestSection form textarea,
+#suggestSection form button {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 1em;
+    padding: 0.6em;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 1em;
+}
+
+#suggestSection form button {
+    background-color: #1db954;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#suggestSection form button:hover {
+    background-color: #1ed760;
+    transform: scale(1.05);
+}
+
+/* SIDEBAR */
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #1f1f1f;
+    padding: 2em 1em;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    transition: transform 0.3s ease;
+    z-index: 200;
+}
+
+#sidebar button {
+    background-color: #282828;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6em;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#sidebar button:hover {
+    background-color: #1db954;
+    transform: scale(1.05);
+}
+
+/* FOOTER */
 footer {
+    margin-top: 2em;
     text-align: center;
     padding: 1em;
-    background-color: #181818;
-    font-size: 0.9em;
     color: #b3b3b3;
+}
+
+/* FADE / SLIDE ANIMATIONS */
+.fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(10px); }
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+    main {
+        margin-right: 0;
+    }
+    #sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 1em 0;
+    }
 }

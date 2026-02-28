@@ -9,27 +9,22 @@
 <body>
 
 <header>
-    <div style="display:flex; justify-content:space-between; align-items:center; padding:0 1em;">
-        <div style="font-size:0.9em; color:#b3b3b3;">
-            Site by Jazix • All links go to original creators
-        </div>
-
-        <div>
-            <button id="showAll">🏠 All Mods</button>
-            <button id="showLikes">💚 Likes</button>
-            <button id="showSuggest">➕ Suggest</button>
-            <input type="text" id="search" placeholder="Search mods...">
-            <select id="categoryFilter">
-                <option value="all">All Categories</option>
-            </select>
-        </div>
+    <div style="font-size:0.9em; color:#b3b3b3; padding:1em;">
+        Site by Jazix • All links go to original creators
     </div>
 
     <h1 style="text-align:center; margin-top:0.5em;">Mod Library</h1>
 </header>
 
+<!-- RIGHT SIDEBAR -->
+<div id="sidebar">
+    <button id="showAll">🏠 All Mods</button>
+    <button id="showLikes">💚 Likes</button>
+    <button id="showSuggest">➕ Suggest</button>
+</div>
+
 <!-- MAIN MOD DISPLAY -->
-<main>
+<main id="mainSection">
     <div id="modContainer"></div>
 </main>
 

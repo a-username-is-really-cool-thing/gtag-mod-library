@@ -2,7 +2,7 @@ let mods = [];
 const container = document.getElementById("modContainer");
 const searchInput = document.getElementById("search");
 const categoryFilter = document.getElementById("categoryFilter");
-const mainSection = document.querySelector("main");
+const mainSection = document.getElementById("mainSection");
 const suggestSection = document.getElementById("suggestSection");
 
 // Load mods with cache bypass
@@ -96,23 +96,36 @@ function toggleLike(modName) {
     localStorage.setItem("likedMods", JSON.stringify(liked));
 }
 
-// TABS
-document.getElementById("showLikes").addEventListener("click", () => {
-    suggestSection.style.display = "none";
-    mainSection.style.display = "block";
+// TAB ANIMATION FUNCTION
+function switchSection(showElem, hideElem) {
+    hideElem.classList.add("fade-out");
 
+    hideElem.addEventListener("animationend", () => {
+        hideElem.style.display = "none";
+        hideElem.classList.remove("fade-out");
+
+        showElem.style.display = "block";
+        showElem.classList.add("fade-in");
+
+        showElem.addEventListener("animationend", () => {
+            showElem.classList.remove("fade-in");
+        }, { once: true });
+    }, { once: true });
+}
+
+// TAB BUTTONS
+document.getElementById("showLikes").addEventListener("click", () => {
+    switchSection(mainSection, suggestSection);
     const liked = getLikedMods();
     const likedMods = mods.filter(mod => liked.includes(mod.name));
     renderMods(likedMods);
 });
 
 document.getElementById("showAll").addEventListener("click", () => {
-    suggestSection.style.display = "none";
-    mainSection.style.display = "block";
+    switchSection(mainSection, suggestSection);
     renderMods(mods);
 });
 
 document.getElementById("showSuggest").addEventListener("click", () => {
-    mainSection.style.display = "none";
-    suggestSection.style.display = "block";
+    switchSection(suggestSection, mainSection);
 });
